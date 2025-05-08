@@ -1,8 +1,11 @@
 # Ruta de Homebrew en Apple Silicon
 BREW_PREFIX := /opt/homebrew
 
+INCLUDE_DIR := include
+
 CXX       := g++
 CXXFLAGS  := -std=c++17 \
+             -I$(INCLUDE_DIR) \
              -I$(BREW_PREFIX)/include \
              -Wall -Wextra
 
@@ -13,7 +16,7 @@ FRAMEWORKS := \
     -framework CoreVideo \
     -framework OpenGL
 
-LDFLAGS   := -L$(BREW_PREFIX)/lib \
+LDFLAGS   := -g -L$(BREW_PREFIX)/lib \
              -lGLEW \
              -lglfw \
              $(FRAMEWORKS)
